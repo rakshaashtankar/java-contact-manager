@@ -23,7 +23,8 @@ public class Main {
 			System.out.println("2. View All Contacts");
 			System.out.println("3. Search Contact By Name");
 			System.out.println("4. Delete Contact By Id");
-			System.out.println("5. Exit");
+			System.out.println("5. Update Contact");
+			System.out.println("6. Exit");
 			System.out.println("Enter your choice: ");
 			
 			int choice = sc.nextInt();
@@ -79,8 +80,32 @@ public class Main {
 					System.out.println("Contact not found");
 				}
 				break;
-			
+				
 			case 5:
+				System.out.println("Enter the ID to update");
+				int updateId = sc.nextInt();
+				sc.nextLine();
+				
+				System.out.println("Enter new Name: ");
+				String newName = sc.nextLine();
+				
+				System.out.println("Enter new Phone: ");
+				String newPhone = sc.nextLine();
+				
+				System.out.println("Enter new Email: ");
+				String newEmail = sc.nextLine();
+				
+				Contact updatedContact = new Contact(updateId, newName, newPhone , newEmail);
+				
+				boolean updated = contactService.updateContact(updatedContact);
+				if(updated) {
+					System.out.println("Contact updated successfully");
+				} else {
+					System.out.println("Contact not found");
+				}
+				break;
+			
+			case 6:
 				exit = true;
 				System.out.println("Exiting Contact Manager...");
 				break;

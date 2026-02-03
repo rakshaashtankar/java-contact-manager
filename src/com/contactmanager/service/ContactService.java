@@ -41,4 +41,16 @@ public class ContactService {
 		}
 		return false;
 	}
+	
+	public boolean updateContact(Contact updatedContact) {
+		for(Contact c : contacts) {
+			if(c.getId() == updatedContact.getId()) {
+				c.setName(updatedContact.getName());
+				c.setPhone(updatedContact.getPhone());
+				c.setEmail(updatedContact.getEmail());
+				return true;
+			}
+		}
+		return false;
+	}
 }
