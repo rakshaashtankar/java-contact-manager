@@ -22,7 +22,8 @@ public class Main {
 			System.out.println("1. Add Contact");
 			System.out.println("2. View All Contacts");
 			System.out.println("3. Search Contact By Name");
-			System.out.println("4. Exit");
+			System.out.println("4. Delete Contact By Id");
+			System.out.println("5. Exit");
 			System.out.println("Enter your choice: ");
 			
 			int choice = sc.nextInt();
@@ -66,8 +67,20 @@ public class Main {
 					System.out.println("Contact not found");
 				}
 				break;
+				
+			case 4: 
+				System.out.println("Enter an ID to delete: ");
+				int id = sc.nextInt();
+				sc.nextLine();
+				boolean deleted = contactService.deleteById(id);
+				if(deleted) {
+					System.out.println("Deleted contact with id: " + id);
+				}else {
+					System.out.println("Contact not found");
+				}
+				break;
 			
-			case 4:
+			case 5:
 				exit = true;
 				System.out.println("Exiting Contact Manager...");
 				break;

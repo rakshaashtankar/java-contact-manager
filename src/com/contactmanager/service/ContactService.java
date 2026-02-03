@@ -33,6 +33,13 @@ public class ContactService {
 	}
 	
 	public boolean deleteById(int id) {
+		if(contacts == null) return false;
+		for(Contact c : contacts) {
+			if(c.getId() == id) {
+				contacts.remove(c);
+				return true;
+			}
+		}
 		return false;
 	}
 }
