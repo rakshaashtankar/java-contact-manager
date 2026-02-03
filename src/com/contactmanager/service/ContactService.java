@@ -7,9 +7,15 @@ import com.contactmanager.model.Contact;
 
 public class ContactService {
 	
-	private ArrayList<Contact> contacts = new ArrayList<>();
+	private List<Contact> contacts = new ArrayList<>();
+	private int counter = 1;
 	
+	//Add Contact
 	public void addContact(Contact contact) {
+		contact.setId(counter);
+		counter++;
+		contacts.add(contact);
+		System.out.println("Contact added successfully with id: " + contact.getId() + " and contact name: " + contact.getName());
 		
 	}
 	
