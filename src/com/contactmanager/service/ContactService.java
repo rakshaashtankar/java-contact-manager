@@ -25,7 +25,7 @@ public class ContactService {
 	
 	public Contact searchByName(String name) {
 		for(Contact c : contacts) {
-			if(c.getName().equalsIgnoreCase(name)  || c.getName().contains(name)) {
+			if(c.getName().toLowerCase().contains(name.toLowerCase())) {
 				return c;
 			}
 		}
@@ -34,9 +34,9 @@ public class ContactService {
 	
 	public boolean deleteById(int id) {
 		if(contacts == null) return false;
-		for(Contact c : contacts) {
-			if(c.getId() == id) {
-				contacts.remove(c);
+		for(int i = 0; i < contacts.size(); i++) {
+			if(contacts.get(i).getId() == id) {
+				contacts.remove(i);
 				return true;
 			}
 		}
