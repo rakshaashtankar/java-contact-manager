@@ -1,5 +1,6 @@
 package com.contactmanager;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.contactmanager.model.Contact;
@@ -40,11 +41,25 @@ public class Main {
 				Contact newContact = new Contact(0, name, phone, email);
 				contactService.addContact(newContact);
 				break;
+				
+			case  2:
+				List<Contact> allContacts = contactService.getAllContacts();
+				if(allContacts.isEmpty()) {
+					System.out.println("No contact found.");
+				} else {
+					System.out.println("\n--- All Contacts ---");
+					System.out.println("ID | Name | Phone | Email");
+					for(Contact c : allContacts) {
+						System.out.println(c.getId() + " | " + c.getName() + " | " + c.getPhone() + " | " + c.getEmail());
+					}
+				}
+				break;
 			
 			case 3:
 				exit = true;
 				System.out.println("Exiting Contact Manager...");
 				break;
+				
 			default:
 				System.out.println("Invalid choice. Try again");
 
