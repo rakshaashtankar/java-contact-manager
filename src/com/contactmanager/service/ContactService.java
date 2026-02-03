@@ -33,7 +33,6 @@ public class ContactService {
 	}
 	
 	public boolean deleteById(int id) {
-		if(contacts == null) return false;
 		for(int i = 0; i < contacts.size(); i++) {
 			if(contacts.get(i).getId() == id) {
 				contacts.remove(i);
