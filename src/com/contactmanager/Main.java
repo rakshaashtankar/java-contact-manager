@@ -21,7 +21,8 @@ public class Main {
 			System.out.println("\n=== Contact Manager ===");
 			System.out.println("1. Add Contact");
 			System.out.println("2. View All Contacts");
-			System.out.println("3. Exit");
+			System.out.println("3. Search Contact By Name");
+			System.out.println("4. Exit");
 			System.out.println("Enter your choice: ");
 			
 			int choice = sc.nextInt();
@@ -54,8 +55,19 @@ public class Main {
 					}
 				}
 				break;
+				
+			case 3: 
+				System.out.println("Enter a name to search: ");
+				String searchName = sc.nextLine();
+				Contact found = contactService.searchByName(searchName);
+				if(found != null) {
+					System.out.println("Found \nId: " + found.getId() + "\nName: " + found.getName() + "\nPhone: " + found.getPhone() + "\nEmail: " + found.getEmail());
+				}else {
+					System.out.println("Contact not found");
+				}
+				break;
 			
-			case 3:
+			case 4:
 				exit = true;
 				System.out.println("Exiting Contact Manager...");
 				break;

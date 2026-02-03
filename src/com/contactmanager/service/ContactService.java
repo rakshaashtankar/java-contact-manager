@@ -24,6 +24,11 @@ public class ContactService {
 	}
 	
 	public Contact searchByName(String name) {
+		for(Contact c : contacts) {
+			if(c.getName().equalsIgnoreCase(name)  || c.getName().contains(name)) {
+				return c;
+			}
+		}
 		return null;
 	}
 	
