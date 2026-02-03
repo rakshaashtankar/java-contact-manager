@@ -20,7 +20,7 @@ public class ContactService {
 	}
 	
 	public List<Contact> getAllContacts(){
-		return contacts;
+		return new ArrayList<>(contacts);
 	}
 	
 	public Contact searchByName(String name) {
