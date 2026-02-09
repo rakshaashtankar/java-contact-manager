@@ -42,7 +42,12 @@ public class Main {
 				String email = sc.nextLine();
 				
 				Contact newContact = new Contact(0, name, phone, email);
-				contactService.addContact(newContact);
+				boolean isAdded = contactService.addContact(newContact);
+				if(isAdded) {
+					System.out.println("Contact added successfully.");
+				} else {
+					System.out.println("Failed to add the contact details.");
+				}
 				break;
 				
 			case  2:
@@ -82,7 +87,7 @@ public class Main {
 				break;
 				
 			case 5:
-				System.out.println("Enter the ID to update");
+				System.out.println("Enter the ID to update:");
 				int updateId = sc.nextInt();
 				sc.nextLine();
 				
@@ -101,7 +106,7 @@ public class Main {
 				if(updated) {
 					System.out.println("Contact updated successfully");
 				} else {
-					System.out.println("Contact not found");
+					System.out.println("Failed to update the contact.");
 				}
 				break;
 			

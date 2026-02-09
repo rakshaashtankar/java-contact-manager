@@ -10,13 +10,32 @@ public class ContactService {
 	private List<Contact> contacts = new ArrayList<>();
 	private int counter = 1;
 	
+	private boolean isValidName(String name) {
+		return name != null && !name.trim().isEmpty();
+	}
+	
+	private boolean isValidPhone(String phone) {
+		return phone != null && phone.matches("\\d{10}");
+	}
+	
+	private boolean isValidEmail(String email) {
+		return email != null && email.contains("@") && email.contains(".");
+	}
+	
+	private boolean isValidContact(Contact contact) {
+		if(contact == null) return false;
+		return isValidName(contact.getName()) &&
+		   isValidPhone(contact.getPhone()) &&
+		   isValidEmail(contact.getEmail());
+			
+	}
+	
 	//Add Contact
-	public void addContact(Contact contact) {
-		contact.setId(counter);
-		counter++;
+	public boolean addContact(Contact contact) {
+		if(!isValidContact(contact)) return false;
+		contact.setId(counter++);
 		contacts.add(contact);
-		System.out.println("Contact added successfully with id: " + contact.getId() + " and contact name: " + contact.getName());
-		
+		return true;
 	}
 	
 	public List<Contact> getAllContacts(){
@@ -24,6 +43,7 @@ public class ContactService {
 	}
 	
 	public Contact searchByName(String name) {
+		if(name == null || name.trim().isEmpty()) return null;
 		for(Contact c : contacts) {
 			if(c.getName().toLowerCase().contains(name.toLowerCase())) {
 				return c;
@@ -43,6 +63,7 @@ public class ContactService {
 	}
 	
 	public boolean updateContact(Contact updatedContact) {
+		if(!isValidContact(updatedContact)) return false;
 		for(Contact c : contacts) {
 			if(c.getId() == updatedContact.getId()) {
 				c.setName(updatedContact.getName());
