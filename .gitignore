@@ -1,0 +1,19 @@
+# Compiled class files
+*.class
+
+# Package directories for Eclipse/IDE
+bin/
+out/
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# IntelliJ IDEA files
+.idea/
+*.iml
+*.iws
+
+# Mac OS system files
+.DS_Store
